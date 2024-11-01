@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(85, 36, 133, 0.7); /* Overlay color */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contact-form-container {
+            width: 400px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+        }
+
+        .contact-form-container img {
+            width: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .contact-form-container h2 {
+            margin-top: 0;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .contact-form-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form-container input,
+        .contact-form-container select,
+        .contact-form-container textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 90%;
+        }
+
+        .contact-form-container textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        .contact-form-container button {
+            background-color: #6C63FF;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .contact-form-container button:hover {
+            background-color: #5a54cc;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
+            color: #999;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-form-container">
+        <span class="close-button">&times;</span>
+        <!-- <img src="https://via.placeholder.com/400x150" alt="Contact Us Image"> -->
+        <h2>REGISTER</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.username.label_tag }}<br>
+            {{ form.username }}<br>
+
+            {{ form.full_name.label_tag }}<br>
+            {{ form.full_name }}<br>
+
+            {{ form.password.label_tag }}<br>
+            {{ form.password }}<br>
+
+            {{ form.email.label_tag }}<br>
+            {{ form.email }}<br>
+
+            {{ form.user_type.label_tag }}<br>
+            {{ form.user_type }}<br>
+
+            <button type="submit">REGISTER NOW</button>
+        </form>
+    </div>
+</body>
+</html>

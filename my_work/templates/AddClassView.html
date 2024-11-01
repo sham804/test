@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Forms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(85, 36, 133, 0.7); /* Overlay color */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .form-section {
+            width: 48%;
+        }
+
+        .form-section h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: #333;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #6C63FF;
+            outline: none;
+            box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #6C63FF;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #5a54cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Class and Discount Forms</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-container">
+                <div class="form-section">
+                    <h3>Class Details</h3>
+                    <div class="form-group">
+                        {{ class_form.subject.label_tag }}
+                        {{ class_form.subject }}
+                    </div>
+                    <div class="form-group">
+                        {{ class_form.classes.label_tag }}
+                        {{ class_form.classes }}
+                    </div>
+                    <div class="form-group">
+                        {{ class_form.time_slot.label_tag }}
+                        {{ class_form.time_slot }}
+                    </div>
+                    <div class="form-group">
+                        {{ class_form.price.label_tag }}
+                        {{ class_form.price }}
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h3>Discount Details</h3>
+                    <div class="form-group">
+                        {{ discount_form.discout.label_tag }}
+                        {{ discount_form.discout }}
+                    </div>
+                    <div class="form-group">
+                        {{ discount_form.offer.label_tag }}
+                        {{ discount_form.offer }}
+                    </div>
+                    <div class="form-group">
+                        {{ discount_form.emi.label_tag }}
+                        {{ discount_form.emi }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
